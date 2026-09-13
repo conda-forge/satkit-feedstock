@@ -26,6 +26,12 @@ build:
 
 requirements:
   build:
+    # Only used if a platform is ever cross-compiled (the arm64 builds are
+    # native, see conda-forge.yml); lets pip run on the build machine.
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - ${{ compiler('rust') }}
