@@ -16,7 +16,7 @@ source:
   sha256: d484d77ae0fa690efbb3bb052514c1b5a02f9ed28fb2cb9dd3f220bbe2e405e0
 
 build:
-  number: 0
+  number: 1
   script:
     # conda-forge policy for Rust packages: bundle the licenses of every crate
     # compiled into the extension module. The sdist root is a cargo workspace
