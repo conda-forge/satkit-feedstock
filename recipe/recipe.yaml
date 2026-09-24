@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: satkit
-  version: "0.22.0"
+  version: "0.22.1"
 
 package:
   name: ${{ name|lower }}
@@ -13,10 +13,10 @@ source:
   # compiled into the extension (data/manifest.json and data/embedded/*.gz —
   # see MANIFEST.in upstream). No network access is needed at build time.
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: d484d77ae0fa690efbb3bb052514c1b5a02f9ed28fb2cb9dd3f220bbe2e405e0
+  sha256: 00dd8e7e468a2c7e434677ca288ba9b3b7c1e6a1ae26a71bff7d1e144633977a
 
 build:
-  number: 1
+  number: 0
   script:
     # conda-forge policy for Rust packages: bundle the licenses of every crate
     # compiled into the extension module. The sdist root is a cargo workspace
