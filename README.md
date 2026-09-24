@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/satkit-feedstoc
 
 Home: https://github.com/ssmichael1/satkit
 
-Package license: (MIT OR Apache-2.0) AND CC-BY-4.0
+Package license: MIT OR Apache-2.0
 
 Summary: Satellite orbital mechanics library (SGP4, JPL ephemerides, frame transforms)
 

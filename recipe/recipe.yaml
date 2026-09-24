@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: satkit
-  version: "0.22.1"
+  version: "0.23.0"
 
 package:
   name: ${{ name|lower }}
@@ -13,7 +13,7 @@ source:
   # compiled into the extension (data/manifest.json and data/embedded/*.gz —
   # see MANIFEST.in upstream). No network access is needed at build time.
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 00dd8e7e468a2c7e434677ca288ba9b3b7c1e6a1ae26a71bff7d1e144633977a
+  sha256: dceaaccd2a675730d879ce150681e17209bbbceb12a7f9ba24d795cc76e2b3f6
 
 build:
   number: 0
@@ -86,14 +86,15 @@ about:
     offline environments can pre-populate a data directory
     (`satkit.utils.update_datafiles()`, then `SATKIT_DATA`) or point
     `SATKIT_DATA_URL` at a mirror.
-  # The source is MIT OR Apache-2.0; the extension embeds the ITU_GRACE16
-  # gravity model (CC BY 4.0, truncated to degree 70) — see THIRDPARTY-DATA.md.
-  license: (MIT OR Apache-2.0) AND CC-BY-4.0
+  # Since 0.23 everything compiled into the extension is a US Government
+  # work or an IERS table (see THIRDPARTY-DATA.md); the CC BY 4.0 ITU_GRACE16
+  # model is no longer embedded and is downloaded only when selected, so the
+  # package licence is the source licence alone.
+  license: MIT OR Apache-2.0
   license_file:
     - LICENSE-MIT
     - LICENSE-APACHE
-    # Attribution / licence notice for the embedded datasets (in the sdist
-    # from 0.22.1; the copy in the recipe directory covers 0.22.0).
+    # Attribution notice for the embedded datasets, shipped in the sdist.
     - THIRDPARTY-DATA.md
     # Generated at build time by cargo-bundle-licenses (see build.script).
     - THIRDPARTY.yml

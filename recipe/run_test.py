@@ -27,11 +27,13 @@ def main() -> None:
 
     # Time scales (compiled-in leap-second table)
     t = sk.time(2024, 3, 1, 0, 0, 0)
-    assert abs((t.as_mjd(sk.timescale.TAI) - t.as_mjd(sk.timescale.UTC)) * 86400 - 37.0) < 1e-6
+    assert abs((t.to_mjd(sk.timescale.TAI) - t.to_mjd(sk.timescale.UTC)) * 86400 - 37.0) < 1e-6
 
-    # Gravity for every built-in model (embedded coefficient files)
+    # Gravity for every built-in model (embedded coefficient files). ITU_GRACE16
+    # is not embedded since 0.23 (CC BY 4.0; downloaded on first use), so it is
+    # not selectable offline and is deliberately left out here.
     pos = np.array([7000e3, 0.0, 0.0])
-    for model in (sk.gravmodel.egm96, sk.gravmodel.jgm3, sk.gravmodel.jgm2, sk.gravmodel.itugrace16):
+    for model in (sk.gravmodel.egm2008, sk.gravmodel.egm96, sk.gravmodel.jgm3, sk.gravmodel.jgm2):
         a = sk.gravity(pos, model=model, degree=20)
         assert abs(np.linalg.norm(a) - 8.13) < 0.1, (model, a)
 
