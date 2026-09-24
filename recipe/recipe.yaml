@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: satkit
-  version: "0.23.0"
+  version: "0.23.1"
 
 package:
   name: ${{ name|lower }}
@@ -13,7 +13,7 @@ source:
   # compiled into the extension (data/manifest.json and data/embedded/*.gz —
   # see MANIFEST.in upstream). No network access is needed at build time.
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: dceaaccd2a675730d879ce150681e17209bbbceb12a7f9ba24d795cc76e2b3f6
+  sha256: 84960b8674b73458fd3c8917faeb276db139d4a869ed05f5bd4f6eac633b77c0
 
 build:
   number: 0
